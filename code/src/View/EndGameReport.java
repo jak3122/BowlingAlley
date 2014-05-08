@@ -1,3 +1,4 @@
+package View;
 /**
  *
  * To change this generated comment edit the template variable "typecomment":
@@ -11,6 +12,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
+import Model.*;
 
 import java.util.*;
 import java.text.*;

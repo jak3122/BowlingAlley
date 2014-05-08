@@ -1,4 +1,8 @@
+package Remove;
 import java.util.HashMap;
+
+import Model.Bowler;
+import Model.Party;
 
 public interface LaneEventInterface extends java.rmi.Remote {
 	public int getFrameNum( ) throws java.rmi.RemoteException;

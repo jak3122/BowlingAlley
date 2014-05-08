@@ -1,3 +1,4 @@
+package View;
 /**
  *
  * To change this generated comment edit the template variable "typecomment":
@@ -11,6 +12,14 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
+import Control.Pinsetter;
+import Model.Lane;
+import Model.Bowler;
+import Remove.LaneEvent;
+import Remove.LaneObserver;
+import Remove.PinsetterEvent;
+import Remove.PinsetterObserver;
 
 public class LaneStatusView implements ActionListener, LaneObserver, PinsetterObserver {
 
@@ -132,7 +141,7 @@ public class LaneStatusView implements ActionListener, LaneObserver, PinsetterOb
 		}
 	}
 
-	public void receiveLaneEvent(LaneEvent le) {
+	public void receiveLaneEvent1(LaneEvent le) {
 		curBowler.setText( ( (Bowler)le.getBowler()).getNickName() );
 		if ( le.isMechanicalProblem() ) {
 			maintenance.setBackground( Color.RED );
@@ -146,9 +155,33 @@ public class LaneStatusView implements ActionListener, LaneObserver, PinsetterOb
 		}
 	}
 
+	public void receivePinsetterEvent1(PinsetterEvent pe) {
+		pinsDown.setText( ( new Integer(pe.totalPinsDown()) ).toString() );
+//		foul.setText( ( new Boolean(pe.isFoulCommited()) ).toString() );
+		
+	}
+
+	@Override
 	public void receivePinsetterEvent(PinsetterEvent pe) {
 		pinsDown.setText( ( new Integer(pe.totalPinsDown()) ).toString() );
 //		foul.setText( ( new Boolean(pe.isFoulCommited()) ).toString() );
+		
+		
+	}
+
+	@Override
+	public void receiveLaneEvent(LaneEvent le) {
+		curBowler.setText( ( (Bowler)le.getBowler()).getNickName() );
+		if ( le.isMechanicalProblem() ) {
+			maintenance.setBackground( Color.RED );
+		}	
+		if ( lane.isPartyAssigned() == false ) {
+			viewLane.setEnabled( false );
+			viewPinSetter.setEnabled( false );
+		} else {
+			viewLane.setEnabled( true );
+			viewPinSetter.setEnabled( true );
+		}
 		
 	}
 

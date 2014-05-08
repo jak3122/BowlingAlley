@@ -1,3 +1,4 @@
+package Remove;
 /*  $Id$
  *
  *  Revisions:
@@ -24,6 +25,9 @@
  */
 
 import java.util.HashMap;
+
+import Model.Bowler;
+import Model.Party;
 
 public class LaneEvent {
 

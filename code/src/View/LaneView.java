@@ -1,5 +1,6 @@
-/*
- *  constructs a prototype Lane View
+package View;
+/* 
+*  constructs a prototype Lane View
  *
  */
 
@@ -7,6 +8,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import java.util.*;
+import Model.*;
+import Remove.*;
 
 public class LaneView implements LaneObserver, ActionListener {
 

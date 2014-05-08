@@ -1,3 +1,4 @@
+package View;
 /* AddPartyView.java
  *
  *  Version:
@@ -33,6 +34,9 @@ import javax.swing.event.*;
 
 import java.util.*;
 import java.text.*;
+
+import Model.*;
+import Remove.*;
 
 /**
  * Constructor for GUI used to Add Parties to the waiting party queue.

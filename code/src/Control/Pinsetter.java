@@ -1,3 +1,4 @@
+package Control;
 /*
  * Pinsetter.java
  *
@@ -72,6 +73,8 @@
 
 import java.util.*;
 import java.lang.Boolean;
+
+import Remove.*;
 
 public class Pinsetter {
 

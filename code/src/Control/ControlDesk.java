@@ -1,3 +1,4 @@
+package Control;
 /* ControlDesk.java
  *
  *  Version:
@@ -43,7 +44,17 @@
 import java.util.*;
 import java.io.*;
 
-class ControlDesk extends Thread {
+import Model.Bowler;
+import Model.BowlerFile;
+import Model.Lane;
+import Model.Party;
+import Remove.ControlDeskEvent;
+import Remove.ControlDeskObserver;
+import Remove.Queue;
+
+
+
+public class ControlDesk extends Thread {
 
 	/** The collection of Lanes */
 	private HashSet lanes;

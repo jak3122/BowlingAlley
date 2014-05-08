@@ -1,3 +1,4 @@
+package Control;
 /**
  * 
  * SMTP implementation based on code by Réal Gagnon mailto:real@rgagnon.com
@@ -11,6 +12,9 @@ import java.util.Iterator;
 import java.net.*;
 import java.awt.*;
 import java.awt.print.*;
+
+import Model.*;
+import Remove.*;
 
 public class ScoreReport {
 

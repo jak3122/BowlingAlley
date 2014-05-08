@@ -1,3 +1,4 @@
+package View;
 /* ControlDeskView.java
  *
  *  Version:
@@ -18,6 +19,12 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.event.*;
+
+import Control.ControlDesk;
+import Control.Pinsetter;
+import Model.Lane;
+import Remove.ControlDeskEvent;
+import Remove.ControlDeskObserver;
 
 import java.util.*;
 
@@ -174,7 +181,13 @@ public class ControlDeskView implements ActionListener, ControlDeskObserver {
 	 *
 	 */
 
+	public void receiveControlDeskEvent1(ControlDeskEvent ce) {
+		partyList.setListData(((Vector) ce.getPartyQueue()));
+	}
+
+	@Override
 	public void receiveControlDeskEvent(ControlDeskEvent ce) {
 		partyList.setListData(((Vector) ce.getPartyQueue()));
+		
 	}
 }

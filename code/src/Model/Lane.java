@@ -1,4 +1,4 @@
-
+package Model;
 /* $Id$
  *
  * Revisions:
@@ -135,6 +135,9 @@ import java.util.Vector;
 import java.util.Iterator;
 import java.util.HashMap;
 import java.util.Date;
+import Control.*;
+import Remove.*;
+import View.*;
 
 public class Lane extends Thread implements PinsetterObserver {	
 	private Party party;

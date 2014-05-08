@@ -1,3 +1,4 @@
+package View;
 /*
  * PinSetterView/.java
  *
@@ -16,6 +17,10 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Remove.PinsetterEvent;
+import Remove.PinsetterObserver;
+
 import java.util.Vector;
 
 
@@ -184,7 +189,7 @@ public class PinSetterView implements PinsetterObserver {
      */
     
 
-    public void receivePinsetterEvent(PinsetterEvent pe){
+    public void receivePinsetterEvent1(PinsetterEvent pe){
 	if ( !(pe.isFoulCommited()) ) {
 	    	JLabel tempPin = new JLabel ( );
 	    	for ( int c = 0; c < 10; c++ ) {
@@ -217,5 +222,12 @@ public class PinSetterView implements PinsetterObserver {
     public static void main ( String args [ ] ) {
 		PinSetterView pg = new PinSetterView ( 1 );
     }
+
+
+	@Override
+	public void receivePinsetterEvent(PinsetterEvent pe) {
+		// TODO Auto-generated method stub
+		
+	}
     
 }

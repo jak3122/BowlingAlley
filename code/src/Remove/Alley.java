@@ -1,3 +1,4 @@
+package Remove;
 /*
  * Alley.java
  *
@@ -24,6 +25,8 @@
  *  Class that is the outer container for the bowling sim
  *
  */
+
+import Control.ControlDesk;
 
 public class Alley {
 	public ControlDesk controldesk;
