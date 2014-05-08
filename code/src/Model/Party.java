@@ -28,16 +28,17 @@ import java.util.*;
 public class Party {
 
 	/** Vector of bowlers in this party */	
-    private Vector myBowlers;
+    private Vector<Bowler> myBowlers;
 	
+    private boolean isAssigned = false;
 	/**
 	 * Constructor for a Party
 	 * 
 	 * @param bowlers	Vector of bowlers that are in this party
 	 */
 		
-    public Party( Vector bowlers ) {
-		myBowlers = new Vector(bowlers);
+    public Party( Vector<Bowler> bowlers ) {
+		myBowlers = new Vector<Bowler>(bowlers);
     }
 
 	/**
@@ -46,8 +47,17 @@ public class Party {
 	 * @return 	A vector of the bowlers in this party
 	 */
 
-    public Vector getMembers() {
+    public Vector<Bowler> getMembers() {
 		return myBowlers;
     }
+    
+    public boolean isAssigned(){
+    	return isAssigned;
+    }
+    
+    public void assign(){
+    	isAssigned = true;
+    }
+    
 
 }
