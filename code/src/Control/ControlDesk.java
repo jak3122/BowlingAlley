@@ -43,20 +43,17 @@ package Control;
 
 import java.util.*;
 import java.io.*;
-import java.util.Queue;
 
 import Model.Bowler;
 import Model.BowlerFile;
 import Model.Lane;
 import Model.Party;
-import Remove.ControlDeskEvent;
-import Remove.ControlDeskObserver;
 import View.ControlDeskView;
 
 
 
 
-public class ControlDesk extends Thread {
+public class ControlDesk extends Thread implements Observable{
 
 	/** The collection of Lanes */
 	private HashSet<Lane> lanes;
@@ -153,7 +150,7 @@ public class ControlDesk extends Thread {
 				curLane.assignParty(nextParty);
 			}
 		}
-		publish(new ControlDeskEvent(getPartyQueue()));
+		notifyObservers();
 	}
 
     /**
@@ -178,7 +175,7 @@ public class ControlDesk extends Thread {
 		}
 		Party newParty = new Party(partyBowlers);
 		parties.add(newParty);
-		publish(new ControlDeskEvent(getPartyQueue()));
+		notifyObservers();
 	}
 
     /**
@@ -209,35 +206,6 @@ public class ControlDesk extends Thread {
 	}
 
     /**
-     * Allows objects to subscribe as observers
-     * 
-     * @param adding	the ControlDeskObserver that will be subscribed
-     *
-     */
-
-	public void subscribe(ControlDeskObserver adding) {
-		subscribers.add(adding);
-	}
-
-    /**
-     * Broadcast an event to subscribing objects.
-     * 
-     * @param event	the ControlDeskEvent to broadcast
-     *
-     */
-
-	public void publish(ControlDeskEvent event) {
-		Iterator eventIterator = subscribers.iterator();
-		while (eventIterator.hasNext()) {
-			(
-				(ControlDeskObserver) eventIterator
-					.next())
-					.receiveControlDeskEvent(
-				event);
-		}
-	}
-
-    /**
      * Accessor method for lanes
      * 
      * @return a HashSet of Lanes
@@ -255,6 +223,19 @@ public class ControlDesk extends Thread {
 		
 		ControlDesk c = new ControlDesk(numLanes);
 		ControlDeskView cdv = new ControlDeskView( c, maxPatronsPerParty);
-		c.subscribe( cdv );
+		c.addObserver( cdv );
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(Observer o : observers){
+			o.update(null,this);
+		}
+		
+	}
+
+	@Override
+	public void addObserver(Observer o) {
+		observers.add(o);
 	}
 }

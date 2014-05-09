@@ -23,16 +23,14 @@ import javax.swing.event.*;
 import Control.ControlDesk;
 import Control.Pinsetter;
 import Model.Lane;
-import Remove.ControlDeskEvent;
-import Remove.ControlDeskObserver;
 
 import java.util.*;
 
-public class ControlDeskView implements ActionListener, ControlDeskObserver {
+public class ControlDeskView implements ActionListener, Observer {
 
 	private JButton addParty, finished, assign;
 	private JFrame win;
-	private JList partyList;
+	private JList<String> partyList;
 	
 	/** The maximum  number of members in a party */
 	private int maxMembers;
@@ -175,19 +173,13 @@ public class ControlDeskView implements ActionListener, ControlDeskObserver {
 	}
 
 	/**
-	 * Receive a broadcast from a ControlDesk
-	 *
-	 * @param ce	the ControlDeskEvent that triggered the handler
-	 *
+	 * update when observing object notifies of state change
+	 * 
+	 * @param o null observable object, java observable not usable in this project
+	 * @param arg reference to object being observed
 	 */
-
-	public void receiveControlDeskEvent1(ControlDeskEvent ce) {
-		partyList.setListData(((Vector) ce.getPartyQueue()));
-	}
-
-	@Override
-	public void receiveControlDeskEvent(ControlDeskEvent ce) {
-		partyList.setListData(((Vector) ce.getPartyQueue()));
+	public void update(Observable o, Object arg) {
+		partyList.setListData(((ControlDesk)arg).getPartyQueue());
 		
 	}
 }
