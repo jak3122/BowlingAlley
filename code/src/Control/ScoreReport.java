@@ -19,16 +19,21 @@ import Remove.*;
 public class ScoreReport {
 
 	private String content;
+	private String nick;
+	private String full;
+	private String date;
+	private String score;
+	Vector<String> v;
 	
 	public ScoreReport( Bowler bowler, int[] scores, int games ) {
-		String nick = bowler.getNick();
-		String full = bowler.getFullName();
-		Vector v = null;
+		nick = bowler.getNick();
+		full = bowler.getFullName();
+		v = null;
 		try{
 			v = ScoreHistoryFile.getScores(nick);
 		} catch (Exception e){System.err.println("Error: " + e);}
 		
-		Iterator scoreIt = v.iterator();
+		Iterator<String> scoreIt = v.iterator();
 		
 		content = "";
 		content += "--Lucky Strike Bowling Alley Score Report--\n";
@@ -45,8 +50,8 @@ public class ScoreReport {
 		content += "\n";
 		content += "Previous scores by date: \n";
 		while (scoreIt.hasNext()){
-			Score score = (Score) scoreIt.next();
-			content += "  " + score.getDate() + " - " +  score.getScore();
+			String info = scoreIt.next();
+			content += info;
 			content += "\n";
 		}
 		content += "\n\n";
